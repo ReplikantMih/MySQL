@@ -1,0 +1,19 @@
+USE vk;
+
+DROP TABLE communities_likes;
+DROP TABLE media_likes;
+DROP TABLE messages_likes;
+
+CREATE TABLE likes (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  item_id INT UNSIGNED NOT NULL,
+  likes_type_id INT UNSIGNED NOT NULL,
+  user_id INT UNSIGNED NOT NULL,
+  created_at DATETIME DEFAULT NOW()
+);
+
+-- Таблица типов лайков
+CREATE TABLE like_types (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL UNIQUE
+);
