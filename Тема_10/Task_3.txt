@@ -1,0 +1,10 @@
+# 3. Организуйте хранение категорий и товарных позиций учебной базы данных shop в СУБД MongoDB.
+
+# ДОБАВЛЕНИЕ И ХРАНЕНИЕ:
+use shop
+db.shop.insert({id:'1', name: 'Процессор Intel', description: '', price: 10, catalog: 'Процессоры', created_at: '2019-10-10', updated_at: ''})
+db.shop.insert({id:'2', name: 'Процессор AMD', description: '', price: 100, catalog: 'Процессоры', created_at: '2019-10-10', updated_at: ''})
+db.shop.insert({id:'3', name: 'Плата ASUS', description: '', price: 117, catalog: 'Платы', created_at: '2019-10-10', updated_at: ''})
+
+# ПОИСК:
+db.shop.find({name: 'Процессор AMD'})
