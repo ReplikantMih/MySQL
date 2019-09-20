@@ -1,0 +1,25 @@
+# 2. При помощи базы данных Redis решите задачу поиска имени пользователя по электронному адресу и наоборот,
+# поиск электронного адреса пользователя по его имени.
+
+# ХРАНЕНИЕ:
+# Храним пользователей в формате хэшей. Основное хранилище.
+HMSET user:1 name Nikolay email aaa@yandex.ru
+HMSET user:2 name Anton email bbb@yandex.ru
+HMSET user:3 name Ivan email ccc@yandex.ru
+HMSET user:4 name Ivan email nnn@yandex.ru
+
+# Для поиска по email поддерживаем в актуальном состоянии хранилище по email.
+SADD email:aaa@yandex.ru Nikolay
+SADD email:bbb@yandex.ru Anton
+SADD email:ccc@yandex.ru Ivan 
+SADD email:nnn@yandex.ru Ivan
+
+# Для поиска по имени поддерживаем в актуальном состоянии хранилище по имени.
+SADD name:Nikolay aaa@yandex.ru
+SADD name:Anton bbb@yandex.ru
+SADD name:Ivan ccc@yandex.ru nnn@yandex.ru
+
+
+# ПОИСК:
+SMEMBERS name:Ivan
+SMEMBERS email:aaa@yandex.ru
